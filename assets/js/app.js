@@ -13,6 +13,7 @@ class DrumKit {
         this.isPlaying = null;
         this.selects = document.querySelectorAll("select");
         this.muteBtns = document.querySelectorAll(".mute");
+        this.tempoSlider = document.querySelector(".tempo-slider");
     }
 
     activePad() {
@@ -25,13 +26,16 @@ class DrumKit {
 
         activeBars.forEach((bar) => {
             // Smoothing the animation by the bpm
-            if (this.bpm > 300) {
-                bar.style.animation = `playTrack 0.1s alternate ease-in-out 2`;
+            if (this.bpm > 250) {
+                bar.style.animation = `playTrack 0.13s alternate ease-in-out 2`;
             } else if (this.bpm > 200) {
                 bar.style.animation = `playTrack 0.2s alternate ease-in-out 2`;
+            } else if (this.bpm < 100) {
+                bar.style.animation = `playTrack 0.3s alternate ease-in-out 2`;
             } else {
                 bar.style.animation = `playTrack 0.25s alternate ease-in-out 2`;
             }
+
             // Check if pads are actives
             if (bar.classList.contains("active")) {
                 // Check which sound
@@ -127,6 +131,20 @@ class DrumKit {
             }
         }
     }
+
+    changeTempo(e) {
+        const tempoText = document.querySelector(".tempo-nr");
+        this.bpm = e.target.value;
+        tempoText.innerText = e.target.value;
+    }
+
+    updateTempo() {
+        clearInterval(this.isPlaying);
+        this.isPlaying = null;
+        if (this.playBtn.classList.contains("active")) {
+            this.start();
+        }
+    }
 }
 
 // Instances
@@ -168,4 +186,18 @@ drumKit.muteBtns.forEach((btn) => {
     btn.addEventListener("click", function (e) {
         drumKit.mute(e);
     });
+});
+
+// ------------------------------------
+
+// Change the text of tempo
+drumKit.tempoSlider.addEventListener("input", function (e) {
+    drumKit.changeTempo(e);
+});
+
+// ------------------------------------
+
+// Update the tempo
+drumKit.tempoSlider.addEventListener("change", function (e) {
+    drumKit.updateTempo();
 });

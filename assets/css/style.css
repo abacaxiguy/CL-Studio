@@ -128,3 +128,30 @@ select {
         transform: scale(1.2) rotate(0deg);
     }
 }
+
+.tempo {
+    margin: 3rem;
+    width: 30%;
+}
+
+.tempo-slider {
+    padding: 0.4rem 0.4rem 0.45rem 0.4rem;
+    -webkit-appearance: none;
+    margin: 1rem 0rem;
+    width: 100%;
+    position: relative;
+    background-color: rgb(88, 88, 88);
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
+.tempo-slider:focus,
+.tempo-slider:active {
+    outline: none;
+}
+
+.tempo p {
+    font-size: 2rem;
+    margin: 2rem;
+    text-align: center;
+}
