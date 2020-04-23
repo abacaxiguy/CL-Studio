@@ -129,9 +129,12 @@ class DrumKit {
     }
 }
 
+// Instances
 const drumKit = new DrumKit();
 
 // Event Listeners
+
+// -------------------------------------------------
 
 // Change the sound
 drumKit.selects.forEach((select) => {
@@ -139,6 +142,8 @@ drumKit.selects.forEach((select) => {
         drumKit.changeSound(e);
     });
 });
+
+// -------------------------------------------------
 
 // Activate the pads
 drumKit.pads.forEach((pad) => {
@@ -148,11 +153,15 @@ drumKit.pads.forEach((pad) => {
     });
 });
 
+// -------------------------------------------------
+
 // Start with the button
 drumKit.playBtn.addEventListener("click", function () {
     // drumKit.index = 0;
     drumKit.start();
 });
+
+// -------------------------------------------------
 
 // Mute the track
 drumKit.muteBtns.forEach((btn) => {
