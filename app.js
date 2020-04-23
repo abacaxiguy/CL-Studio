@@ -95,9 +95,11 @@ class DrumKit {
 
     mute(e) {
         const muteIndex = e.target.getAttribute("data-track");
-        e.target.classList.toggle("active");
+        const i = e.target.children[0];
 
-        if (e.target.classList.contains("active")) {
+        if (i.classList.contains("fa-volume-up")) {
+            i.classList.remove("fa-volume-up");
+            i.classList.add("fa-volume-mute");
             switch (muteIndex) {
                 case "0":
                     this.kickAudio.volume = 0;
@@ -110,6 +112,8 @@ class DrumKit {
                     break;
             }
         } else {
+            i.classList.remove("fa-volume-mute");
+            i.classList.add("fa-volume-up");
             switch (muteIndex) {
                 case "0":
                     this.kickAudio.volume = 1;
