@@ -4,8 +4,13 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: "Century Gothic";
+    src: url("./assets/fonts/GOTHIC.TTF") format("truetype");
+}
+
 body {
-    font-family: monospace;
+    font-family: "Century Gothic", Century Gothic;
 }
 
 i,
